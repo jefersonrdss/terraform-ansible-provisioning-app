@@ -1,0 +1,12 @@
+### Terraform ###
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+
+### Nodejs ###
+# node_modules directories
+app/node_modules/
