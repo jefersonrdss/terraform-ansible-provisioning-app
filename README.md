@@ -5,7 +5,7 @@
 
 Changes must be made according to each environment.
 
-The idea of ​​this project is to show the framework with terraform and ansible to provision a Nodejs application in a virtual machine in vSphere provider or in an instance of AWS EC2.
+The idea of ​​this project is to show the framework with terraform and ansible to provision a simple Nodejs application in a virtual machine in vSphere provider or in an instance of AWS EC2.
 
 ---
 ### **TOOLS**
