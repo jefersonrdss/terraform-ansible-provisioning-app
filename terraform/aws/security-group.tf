@@ -27,7 +27,7 @@
 resource "aws_security_group" "us-east-2-rules-prod-instance" {
   provider = aws.us-east-2
   name        = "Rules Prod Instance"
-  description = "Allow SSH inbound traffic and Allow HTTP/HTTPS outbound traffic"
+  description = "Allow SSH, HTTP/HTTPS in inbound and outbound traffic"
   # vpc_id      = aws_vpc.id
 
   ingress = [
@@ -38,6 +38,42 @@ resource "aws_security_group" "us-east-2-rules-prod-instance" {
       protocol         = "tcp"
       cidr_blocks      = var.cdirs_allowed_ssh
       ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
+    },
+
+    {
+      description      = "Allow HTTP"
+      from_port        = 80
+      to_port          = 80
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
+    },
+
+    {
+      description      = "Allow HTTPS"
+      from_port        = 443
+      to_port          = 443
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
+    },
+
+    {
+      description      = "Allow tcp_8080"
+      from_port        = 8080
+      to_port          = 8080
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids  = []
       security_groups  = []
       self             = false

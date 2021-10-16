@@ -19,7 +19,7 @@ resource "aws_instance" "node-app" {
   instance_type = "t2.micro"
   key_name = var.key_name
   tags = {
-    Name = "node-app server"
+    Name = "node-app"
   }
   vpc_security_group_ids = [
     "${aws_security_group.us-east-2-rules-prod-instance.id}"
