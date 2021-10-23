@@ -5,3 +5,7 @@
 output "node-app-ip" {
   value = aws_instance.node-app.public_ip
 }
+
+output "jenkins-ip" {
+  value = aws_instance.jenkins.public_ip
+}

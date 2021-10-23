@@ -35,3 +35,25 @@ resource "aws_instance" "node-app" {
   #               EOF
 }
 ###
+
+resource "aws_instance" "jenkins" {
+  provider = aws.us-east-2
+  ami = var.amis["ubuntu-20-us-east-2"] # ubuntu 20.04 LTS
+  instance_type = "t2.micro"
+  key_name = var.key_name
+  tags = {
+    Name = "Jenkins"
+  }
+  vpc_security_group_ids = [
+    "${aws_security_group.us-east-2-rules-prod-instance.id}"
+  ]
+  depends_on = [aws_security_group.us-east-2-rules-prod-instance]
+
+  # user_data = <<-EOF
+  #               #!/bin/bash
+  #               sudo apt update
+  #               sudp apt upgrade -y
+  #               cd ~
+  #               echo "Ubuntu 20.04 LTS - System Ready!" > README.md
+  #               EOF
+}
