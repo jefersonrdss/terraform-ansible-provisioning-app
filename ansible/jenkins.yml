@@ -27,7 +27,7 @@
       force_apt_get: yes
     become: yes
 
-  - name: Add apt-key of jenkins repo
+  - name: Add apt key to jenkins repo
     shell: "wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -"
 
   - name: Add Jenkins on repo source list
@@ -46,6 +46,6 @@
       force_apt_get: yes
     become: yes
 
-  - name: Jenkins Initial Admin Password
-    shell: "cat /var/lib/jenkins/secrets/initialAdminPassword"
-    become: yes
+  # - name: Jenkins Initial Admin Password
+  #   shell: "cat /var/lib/jenkins/secrets/initialAdminPassword"
+  #   become: yes
